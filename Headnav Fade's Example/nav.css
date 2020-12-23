@@ -1,0 +1,60 @@
+@charset "utd-8";
+body{
+    margin: 0;
+}
+#wrapper{
+    width: 91%;
+    margin: 20px auto;
+    overflow: hidden;
+}
+.navopen {
+    position: relative;
+    z-index: 5;
+    padding-top: 10px;
+}
+.navopen i{
+    font-size: 50px;
+    color: blue;
+}
+.navlist {
+    display: none;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    left: -500px;
+    z-index: 3;
+    background-color: rgba(0,0,0,0.7);
+    transition: 0.5s;
+}
+.navlist ul::before {
+    content: "";
+    display: block;
+    width: 80px;
+    border-bottom: gray solid 3px;
+    position: absolute;
+    left: 20px;
+}
+.navlist ul {
+    border-left: gray solid 3px;
+    padding: 0;
+    margin-left: 100px;
+    width: 360px;
+}
+.navlist li {
+    padding: 20px;
+    font-size: 30px;
+    list-style: none;
+    border-bottom: solid 3px gray;
+    color: cornflowerblue;
+    font-weight: 600;
+    font-family: monospace;
+}
+main{
+    width: 500px;
+    margin: 0 auto;
+}
+.dammy {
+    position: relative;
+    z-index: 1;
+    font-size: 30px;
+}
