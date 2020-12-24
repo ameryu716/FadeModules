@@ -1,6 +1,8 @@
-const slider = document.getElementsByClassName("slider")[0];
-const isleft = document.getElementById("isleft");
-const isright = document.getElementById("isright");
+//Example=>
+// const slider = document.getElementsByClassName("slider")[0];
+// const isleft = document.getElementById("isleft");
+// const isright = document.getElementById("isright");
+//browslide(slider,isleft,isright,"div");
 
 let rx = 0;
 let flag = true;
@@ -59,5 +61,3 @@ function autoslide(slidiv){
       flag = true;
    }, 3000);
 }
-
-browslide(slider,isleft,isright,"div");
