@@ -1,7 +1,6 @@
 // const slider = document.getElementsByClassName("slider")[0];
-const imgelem = slider.getElementsByTagName("img");
-const coverbox = document.getElementsByClassName("coverbox")[0];
-
+// const imgelem = slider.getElementsByTagName("img");
+// const coverbox = document.getElementsByClassName("coverbox")[0];
 
 function createCover(img,coverbox){
     const coverimg = new Image();
