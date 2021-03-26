@@ -2,7 +2,7 @@
 HTMLElements用のフェード効果モジュール群です。私用ですが指摘はぜひお願いします。
 
 ---
-## headnavFade.js
+## <font color="indianred">headnavFade.js</font>
 ・ヘッダーナビ用のフェードモジュールです。<br>
 ・ハンバーガーメニュークリックを想定しています。<br>
 ・フェード方向は左側です。<br>
@@ -11,7 +11,7 @@ HTMLElements用のフェード効果モジュール群です。私用ですが�
 ・フェード秒数はデフォルトで10sが限度になっています。お好みで変えてください。<br>
 使用例：↓
 
-```
+```js
 const navopen = document.getElementsByClassName("navopen");
 navopen[0].onclick = ()=>{
     navtoggle();
@@ -34,7 +34,7 @@ function navtoggle(){
 ```
 
 ---
-## opacityChangesFade.js
+## <font color="lightblue">opacityChangesFade.js</font>
 
 ・汎用性の高いフェードモジュールです。<br>
 ・あらゆるelementsのフェードを想定しています。<br>
