@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <!-- RightToggleMenu-Example -->
+    <!-- Author ameryu716 -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    <title>右引き出しメニュー例</title>
+    <style>
+        body {
+            padding: 0;
+            background-color: #23282d;
+        }
+        a {
+            color: unset;
+        }
+        #custom-r-menu {
+            height: 104vh;
+            width: 30vw;
+            opacity: 0.9;
+            top: 0;
+            display: block;
+            transition: 0.3s;
+            left: unset;
+            right: -30.5vw;
+            position: fixed;
+            border-bottom: solid 3px mediumseagreen;
+            border-left: solid 3px mediumseagreen;
+            background: #27262a;
+            font-size: 16px;
+            color: #fff;
+            border-radius: 0 0 0 100px;
+            z-index: 2;
+        }
+        #custom-r-menu h2 {
+            margin: 10px;
+        }
+        #custom-r-menu ul {
+            padding: 0;
+            overflow-y: scroll;
+            height: 90vh;
+            margin-bottom: 0;
+            width: 32vw;
+        }
+        #custom-r-menu li {
+            list-style: none;
+        }
+        #custom-r-menu a {
+            display: block;
+            padding: 12px 20px;
+            border-bottom: 1px dotted #f1f1f1;
+            font-weight: 500;
+            font-size: 16px;
+            height: 50px;
+            letter-spacing: 0.5px;
+            box-sizing: border-box;
+            text-decoration: none;
+        }
+        #custom-r-menu li:first-child a {
+            border-top: solid 1px #f1f1f1;
+        }
+        #swipe {
+            height: 30px;
+            width: 30px;
+            border-radius: 100% 0 0 100%;
+            border: solid mediumspringgreen 2px;
+            position: absolute;
+            left: -35px;
+            background: transparent;
+            top: 30px;
+            border-right: none;
+        }
+        #swipe button {
+            background: transparent;
+            border: none;
+            font-size: 24px;
+            color: #fff;
+            padding: 2px 8px;
+            margin: 0;
+            line-height: 1.2;
+        }
+        #nav-c-switch {
+            position: fixed;
+            display: flex;
+            background: rgba(0,0,0,0.6);
+            bottom: 50px;
+            color: mediumseagreen;
+            line-height: 1.2;
+            padding: 23px 3px;
+            right: 32px;
+            text-align: center;
+            z-index: 2;
+            width: 80px;
+            height: 80px;
+            border-radius: 100%;
+            border: none;
+        }
+        #nav-c-switch span{
+            font-size: 18px;
+            margin: 7px 2px;
+        }
+        #nav-c-switch i{
+            font-size: 36px;
+        }
+        @media only screen and (max-width: 767px){
+            #custom-r-menu {
+                width: 70vw;
+                right: -70.5vw;
+            }
+            #custom-r-menu ul {
+                width: 70vw;
+            }
+            #nav-c-switch {
+                padding: 27px 7px;
+            }
+            #nav-c-switch span{
+                font-size: 4.5vw;
+                margin: 4px;
+            }
+            #nav-c-switch i{
+                font-size: 8vw;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="custom-r-menu">
+        <div id="swipe">
+            <button disabled>
+                <i class="fas fa-angle-left"></i>
+            </button>
+        </div>
+        <nav>
+            <h2>Menu</h2>
+            <ul>
+                <li>
+                    <a href="#">おいしいめにゅー</a>
+                </li>
+                <li>
+                    <a href="#">素晴らしいメニュー</a>
+                </li>
+                <li>
+                    <a href="#">おいしいめにゅー</a>
+                </li>
+                <li>
+                    <a href="#">素晴らしいメニュー</a>
+                </li><li>
+                    <a href="#">おいしいめにゅー</a>
+                </li>
+                <li>
+                    <a href="#">素晴らしいメニュー</a>
+                </li><li>
+                    <a href="#">おいしいめにゅー</a>
+                </li>
+                <li>
+                    <a href="#">素晴らしいメニュー</a>
+                </li><li>
+                    <a href="#">おいしいめにゅー</a>
+                </li>
+                <li>
+                    <a href="#">素晴らしいメニュー</a>
+                </li><li>
+                    <a href="#">おいしいめにゅー</a>
+                </li>
+                <li>
+                    <a href="#">素晴らしいメニュー</a>
+                </li><li>
+                    <a href="#">おいしいめにゅー</a>
+                </li>
+                <li>
+                    <a href="#">素晴らしいメニュー</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <button id="nav-c-switch">
+        <i class="fas fa-angle-left"></i>
+        <span>Menu</span>
+    </button>
+    <script>
+        function toggleAbilityAdd(terminal) {
+            window.addEventListener("load", () => {
+                const navRtoggleBt = document.getElementById("nav-c-switch");
+                const CustomRMenu = document.getElementById("custom-r-menu");
+                let rightMenuToggle = false;
+                let toggleWidth = "";
+                //端末ごとにメニュー引き出し幅変更
+                if (terminal === "mobile") {
+                    toggleWidth = "-70.5vw";
+                }
+                else if (terminal === "PC") {
+                    toggleWidth = "-30.5vw";
+                }
+                navRtoggleBt.addEventListener("click", () => {
+                    if (rightMenuToggle) {
+                        //open
+                        CustomRMenu.style.right = toggleWidth;
+                        rightMenuToggle = false;
+                    }
+                    else {
+                        //close
+                        CustomRMenu.style.right = "0.5vw";
+                        rightMenuToggle = true;
+                    }
+                });
+            });
+        }
+        if (navigator.userAgent.indexOf('iPhone') > 0 || navigator.userAgent.indexOf('iPad') > 0 || navigator.userAgent.indexOf('iPod') > 0 || navigator.userAgent.indexOf('Android') > 0) {
+            toggleAbilityAdd("mobile");
+        }else{
+            toggleAbilityAdd("PC");
+        }
+    </script>
+</body>
+</html>

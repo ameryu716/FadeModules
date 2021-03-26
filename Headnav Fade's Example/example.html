@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ヘッダーフェードナビ例</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <style>
+        body{
+            margin: 0;
+        }
+        #wrapper{
+            width: 91%;
+            margin: 20px auto;
+            overflow: hidden;
+        }
+        #navopen {
+            position: relative;
+            z-index: 5;
+            padding-top: 10px;
+        }
+        #navopen i{
+            font-size: 50px;
+            color: blue;
+        }
+        #navlist {
+            display: none;
+            width: 100vw;
+            position: absolute;
+            top: 0;
+            left: -500px;
+            z-index: 3;
+            background-color: rgba(0,0,0,0.7);
+            transition: 0.5s;
+        }
+        #navlist ul::before {
+            content: "";
+            display: block;
+            width: 80px;
+            border-bottom: gray solid 3px;
+            position: absolute;
+            left: 20px;
+        }
+        #navlist ul {
+            border-left: gray solid 3px;
+            padding: 0;
+            margin-left: 100px;
+            width: 360px;
+        }
+        #navlist li {
+            padding: 20px;
+            font-size: 30px;
+            list-style: none;
+            border-bottom: solid 3px gray;
+            color: cornflowerblue;
+            font-weight: 600;
+            font-family: monospace;
+        }
+        main{
+            width: 500px;
+            margin: 0 auto;
+        }
+        .dammy {
+            position: relative;
+            z-index: 1;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <header>
+            <div id="navopen">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div id="navlist">
+                <ul>
+                    <li>お知らせ</li>
+                    <li>お知らせ書いた人</li>
+                    <li>お知らせの生みの親</li>
+                    <li>お知らせはいずこに</li>
+                    <li>お知らせという深淵</li>
+                </ul>
+            </div>
+        </header>
+        <main>
+            <div class="dammy">
+                <p>ダミーテキストダミーテキスト</p>
+                <p>ダミーテキストダミーテキスト</p>
+                <p>ダミーテキストダミーテキスト</p>
+                <p>ダミーテキストダミーテキスト</p>
+                <p>ダミーテキストダミーテキスト</p>
+                <p>ダミーテキストダミーテキスト</p>
+                <p>ダミーテキストダミーテキスト</p>
+                <p>ダミーテキストダミーテキスト</p> 
+            </div>
+        </main>
+        <footer>
+
+        </footer>
+        <script>
+            window.addEventListener("load",()=>{
+                const list = document.getElementById("navlist");
+                let status = true;
+                function listinLeft(delay,elem){
+                    if(delay<10){
+                            elem.style.display = "block";
+                            elem.style.opacity = "0";
+                            elem.style.transition = delay+"s";
+                            setTimeout(()=>{
+                                elem.style.opacity = "1";
+                                elem.style.left = "0";
+                            },100)
+                    }else{
+                        throw new Error("フェード秒数が長すぎます");
+                    }
+                }//※フェード秒数は10秒以内です
+
+                function listoutLeft(delay,elem){
+                    if(delay<10){
+                            elem.style.transition = delay+"s";
+                            list.style.left = "-500px";
+                            elem.style.opacity = "0";
+                            setTimeout(()=>{
+                                elem.style.display = "none";
+                            },delay*900)
+                    }else{
+                        throw new Error("フェード秒数が長すぎます");
+                    }
+                }//※フェード秒数は10秒以内です
+                function navtoggle(){
+                    if(status){
+                        // list.style.display = "none";
+                        status = false;
+                        listinLeft(0.5,list);
+                    }else{
+                        // list.style.display = "block";
+                        status = true;
+                        listoutLeft(0.5,list);
+                    }
+                }
+                
+                const navopen = document.getElementById("navopen");
+                navopen.onclick = ()=>{
+                    navtoggle();
+                }
+            })
+        </script>
+    </div>
+</body>
+</html>

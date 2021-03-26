@@ -1,10 +1,10 @@
 "use strict";
 window.addEventListener("load",()=>{
-    const navopen = document.getElementById("navopen");
-    const list = document.getElementById("navlist");
-    let inaction = true;
+    const navopen:HTMLElement = <HTMLElement>document.getElementById("navopen");
+    const list:HTMLElement = <HTMLElement>document.getElementById("navlist");
+    let inaction:boolean = true;
 
-    function listinLeft(delay,elem){
+    function listinLeft(delay:number,elem:HTMLElement){
         if(delay<10){
                 elem.style.display = "block";
                 elem.style.opacity = "0";
@@ -17,10 +17,11 @@ window.addEventListener("load",()=>{
             throw new Error("フェード秒数が長すぎます");
         }
     }//※フェード秒数は10秒以内です
-    function listoutLeft(delay,elem){
+
+    function listoutLeft(delay:number,elem:HTMLElement){
         if(delay<10){
                 elem.style.transition = delay+"s";
-                list[0].style.left = "-500px";
+                list.style.left = "-500px";
                 elem.style.opacity = "0";
                 setTimeout(()=>{
                     elem.style.display = "none";
@@ -29,6 +30,7 @@ window.addEventListener("load",()=>{
             throw new Error("フェード秒数が長すぎます");
         }
     }//※フェード秒数は10秒以内です
+
     function navtoggle(){
         if(inaction){
             // list[0].style.display = "none";
@@ -41,8 +43,7 @@ window.addEventListener("load",()=>{
         }
     }
 
-    navopen[0].onclick = ()=>{
+    navopen.onclick = ()=>{
         navtoggle();
-        console.log("a");
     }
 })
